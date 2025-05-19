@@ -1,0 +1,130 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Chain Quest</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>BLOCK CHAIN QUEST</h1>
+    <div id="ui">
+        <p class="tooltip-container">LEVEL: <span id="level">1</span>
+            <span class="tooltip">Bitcoin atravessou muitas fases históricas importantes</span>
+        </p>
+        <p class="tooltip-container">BLOCKS: <span id="blocks">0</span> / <span id="max-blocks">15</span>
+            <span class="tooltip">Blocos Bitcoin contêm transações verificadas</span>
+        </p>
+        <p class="tooltip-container">HASH POWER: <span id="hash-rate">1</span> H/s
+            <span class="tooltip">Poder computacional da rede. Hoje o Bitcoin usa ~400 Exahashes/s</span>
+        </p>
+        <p class="tooltip-container">SCORE: <span id="score">0</span>
+            <span class="tooltip">Pontos de mineração acumulados</span>
+        </p>
+    </div>
+    
+    <div id="historical-event">
+        <span id="year">2009</span>: <span id="event">Genesis Block</span>
+    </div>
+    
+    <div id="challenges"></div>
+    <div id="game-container">
+        <canvas id="game"></canvas>
+        <div id="level-up-message">LEVEL UP!</div>
+        <div class="game-over" id="game-over">
+            GAME OVER<br>
+            FINAL SCORE: <span id="final-score">0</span><br>
+            <p id="game-over-message"></p>
+            <button id="restart">RESTART</button>
+            <button id="start-quiz">TESTE SEUS CONHECIMENTOS</button>
+        </div>
+        
+        <!-- Educational overlays -->
+        <div id="tutorial-overlay" class="educational-overlay">
+            <div class="tutorial-content">
+                <h2 id="tutorial-title">Bem-vindo ao Bitcoin!</h2>
+                <p id="tutorial-text">Você é um minerador digital. Sua missão: manter a rede Bitcoin segura!</p>
+                <button id="tutorial-next">PRÓXIMO</button>
+                <button id="tutorial-skip">PULAR TUTORIAL</button>
+            </div>
+        </div>
+        
+        <div id="popup-overlay" class="educational-overlay">
+            <div class="popup-content">
+                <p id="popup-text"></p>
+                <button id="popup-close">OK</button>
+            </div>
+        </div>
+        
+        <div id="achievement-overlay" class="educational-overlay">
+            <div class="achievement-content">
+                <h2>🏆 CONQUISTA DESBLOQUEADA!</h2>
+                <h3 id="achievement-title"></h3>
+                <p id="achievement-desc"></p>
+                <p id="achievement-edu"></p>
+                <button id="achievement-close">SHOW!</button>
+            </div>
+        </div>
+        
+        <div id="fact-overlay" class="educational-overlay">
+            <div class="fact-content">
+                <h3>VOCÊ SABIA?</h3>
+                <p id="fact-text"></p>
+                <button id="fact-close">LEGAL!</button>
+            </div>
+        </div>
+        
+        <div id="quiz-overlay" class="educational-overlay">
+            <div class="quiz-content">
+                <h2>Quiz Bitcoin</h2>
+                <p id="quiz-question"></p>
+                <div id="quiz-options"></div>
+                <p id="quiz-explanation" class="hidden"></p>
+                <div id="quiz-navigation">
+                    <button id="quiz-next" class="hidden">PRÓXIMA</button>
+                    <div id="quiz-results" class="hidden">
+                        <h3>Resultado: <span id="quiz-score">0</span>/<span id="quiz-total">5</span></h3>
+                        <button id="quiz-close">FINALIZAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button id="help-button" class="tooltip-container">?
+            <span class="tooltip">Mostrar dica sobre Bitcoin</span>
+        </button>
+    </div>
+
+    <!-- Mobile controls -->
+    <div id="mobile-controls">
+        <div class="control-row">
+            <div class="control-button" id="btn-up">▲</div>
+        </div>
+        <div class="control-row">
+            <div class="control-button" id="btn-left">◀</div>
+            <div class="control-button" id="btn-right">▶</div>
+        </div>
+        <div class="control-row">
+            <div class="control-button" id="btn-down">▼</div>
+        </div>
+    </div>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "/state.js": "./state.js",
+            "/ui.js": "./ui.js",
+            "/audio.js": "./audio.js",
+            "/objects.js": "./objects.js",
+            "/utils.js": "./utils.js",
+            "/game.js": "./game.js",
+            "/constants.js": "./constants.js",
+            "/input.js": "./input.js",
+            "/mobile.js": "./mobile.js",
+            "/assets.js": "./assets.js",
+            "/education.js": "./education.js"
+        }
+    }
+    </script>
+    <script type="module" src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,335 @@
+:root {
+  --bitcoin-orange: #f7931a;
+  --bitcoin-dark: #000000;
+  --education-blue: #2196f3;
+  --success-green: #4caf50;
+  --warning-red: #f44336;
+  --neutral-gray: #9e9e9e;
+  --background: #1a1a1a;
+  --text-light: #ffffff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--background);
+    overflow: hidden;
+    font-family: 'Courier New', monospace;
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+h1 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: var(--bitcoin-orange);
+}
+#game-container {
+    width: 95vw;
+    max-width: 1280px;
+    border: 4px solid var(--bitcoin-orange);
+    box-sizing: border-box;
+    position: relative;
+    margin: 0 auto;
+}
+#game {
+    display: block;
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+}
+#ui {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+    width: 95vw;
+    max-width: 1280px;
+    margin: 10px auto;
+}
+#ui p {
+    margin: 0 10px;
+}
+
+/* Tooltip styling */
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 200px;
+    background-color: var(--education-blue);
+    color: var(--text-light);
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 14px;
+}
+
+.tooltip-container:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+#historical-event {
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--bitcoin-orange);
+    font-weight: bold;
+}
+
+/* Educational overlays */
+.educational-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    display: none;
+}
+
+.tutorial-content, .popup-content, .achievement-content, .fact-content, .quiz-content {
+    background-color: var(--bitcoin-dark);
+    border: 3px solid var(--bitcoin-orange);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 80%;
+    text-align: center;
+}
+
+.tutorial-content h2, .achievement-content h2, .quiz-content h2 {
+    color: var(--bitcoin-orange);
+    margin-top: 0;
+}
+
+.tutorial-content button, .popup-content button, .achievement-content button, 
+.fact-content button, .quiz-content button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: var(--bitcoin-orange);
+    color: var(--bitcoin-dark);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.tutorial-content button:hover, .popup-content button:hover, 
+.achievement-content button:hover, .fact-content button:hover, 
+.quiz-content button:hover {
+    background: var(--success-green);
+}
+
+#tutorial-skip {
+    background: var(--neutral-gray);
+}
+
+#quiz-end-early {
+    margin-top: 20px;
+    padding: 8px 15px;
+    background: var(--neutral-gray);
+    color: var(--text-light);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#quiz-end-early:hover {
+    background: var(--warning-red);
+}
+
+/* Quiz specific styles */
+.quiz-content {
+    min-width: 60%;
+}
+
+#quiz-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quiz-option {
+    background-color: var(--bitcoin-dark);
+    border: 2px solid var(--bitcoin-orange);
+    border-radius: 5px;
+    width: 80%;
+    margin: 5px 0;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.quiz-option:hover {
+    background-color: rgba(247, 147, 26, 0.2);
+}
+
+.quiz-option.correct {
+    background-color: var(--success-green);
+    color: white;
+}
+
+.quiz-option.incorrect {
+    background-color: var(--warning-red);
+    color: white;
+}
+
+#quiz-explanation {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.lightning-effect {
+    position: absolute;
+    background: linear-gradient(to bottom right, yellow, #ff6600);
+    opacity: 0.8;
+    z-index: 5;
+    animation: lightning 0.3s ease-out;
+}
+
+@keyframes lightning {
+    0% {opacity: 0.9;}
+    50% {opacity: 0.6;}
+    100% {opacity: 0;}
+}
+
+.hidden {
+    display: none;
+}
+
+/* Help button */
+#help-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--education-blue);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#challenges {
+    display: none; /* Initially hidden */
+}
+.game-over {
+    position: absolute;
+    top: 0; /* Cover the whole canvas area */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex; /* Use flexbox for centering content */
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    color: var(--bitcoin-orange);
+    font-size: clamp(20px, 5vw, 48px); /* Responsive font size */
+    text-align: center;
+    display: none; /* Hidden by default */
+}
+.game-over button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: var(--bitcoin-orange);
+    color: var(--bitcoin-dark);
+    border: none;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: clamp(16px, 2vw, 24px);
+    margin-left: 5px;
+    margin-right: 5px;
+}
+#level-up-message {
+     position: absolute;
+     top: 50%;
+     left: 0;
+     width: 100%;
+     text-align: center;
+     color: var(--bitcoin-orange);
+     font-size: clamp(30px, 7vw, 64px);
+     z-index: 10;
+     display: none; /* Initially hidden */
+     transform: translateY(-50%); /* Vertically center */
+ }
+
+#mobile-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    display: none; /* Hidden by default, shown on mobile */
+    flex-direction: column;
+    align-items: center;
+    z-index: 20;
+}
+
+.control-row {
+    display: flex;
+    justify-content: center;
+    margin: 5px 0;
+}
+
+.control-button {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(0, 255, 0, 0.3);
+    border: 2px solid var(--bitcoin-orange);
+    border-radius: 50%;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: var(--bitcoin-orange);
+    user-select: none;
+    touch-action: manipulation;
+}
+
+/* Show mobile controls on small screens */
+@media (max-width: 768px) {
+    #mobile-controls {
+        display: flex;
+    }
+    
+    #game-container {
+        margin-bottom: 160px; /* Make room for controls */
+    }
+}
